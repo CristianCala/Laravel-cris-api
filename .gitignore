@@ -1,6 +1,46 @@
-composer.phar
+###> symfony/framework-bundle ###
+/.env
+/public/bundles/
+/var/
 /vendor/
+###< symfony/framework-bundle ###
 
-# Commit your application's lock file https://getcomposer.org/doc/01-basic-usage.md#commit-your-composer-lock-file-to-version-control
-# You may choose to ignore a library lock file http://getcomposer.org/doc/02-libraries.md#lock-file
-# composer.lock
+###> sonata-project/media-bundle ###
+/public/uploads/
+###< sonata-project/media-bundle ###
+
+###> symfony/web-server-bundle ###
+/.web-server-pid
+###< symfony/web-server-bundle ###
+
+###> symfony/phpunit-bridge ###
+.phpunit
+/phpunit.xml
+###< symfony/phpunit-bridge ###
+config/parameters.yaml
+node_modules
+public/build
+/maintenance_on
+
+/.idea
+/.phplint-cache
+/phpstan
+
+.vscode
+/coverage-php
+/coverage-js
+.phpunit.result.cache
+
+###< docker databases ###
+.docker/db
+
+###> squizlabs/php_codesniffer ###
+/.phpcs-cache
+/phpcs.xml
+###< squizlabs/php_codesniffer ###
+
+###< avatar uploader ###
+public/media/cache
+
+###< translations ###
+translations/ui/auto_gen_keys.json
