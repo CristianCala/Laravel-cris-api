@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\Product;
 
 class ProductSeeder extends Seeder
 {
@@ -13,6 +14,8 @@ class ProductSeeder extends Seeder
      */
     public function run()
     {
-        factory(\App\Product::class, 10)->create();
+        $number = $this->command->ask('¿Cuántos productos desea crear?', 3);
+
+        Product::factory()->count($number)->create();
     }
 }
