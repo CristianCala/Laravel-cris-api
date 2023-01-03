@@ -2,8 +2,10 @@
 
 namespace Tests\Feature;
 
-use App\Product;
+use App\Models\Product;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Laravel\Sanctum\Sanctum;
 use Tests\TestCase;
 
 class ProductControllerTest extends TestCase
@@ -17,17 +19,22 @@ class ProductControllerTest extends TestCase
 
     public function test_index()
     {
-        factory(Product::class, 5)->create();
+        Product::factory()->count(5)->create();
 
         $response = $this->getJson('/api/products');
 
         $response->assertSuccessful();
         $response->assertHeader('content-type', 'application/json');
-        $response->assertJsonCount(5);
+        $response->assertJsonCount(5, 'data');
     }
 
     public function test_create_new_product()
     {
+        Sanctum::actingAs(
+            User::factory()->create(),
+            ['*']
+        );
+
         $data = [
             'name' => 'Hola',
             'price' => 1000,
